@@ -1,7 +1,7 @@
 import mwapi
 
-APIKEY = 'f1778399-c8c8-48fd-b6d8-4afd40ce0530'
-dictionary = mwapi.DictionaryAPI(APIKEY)
+import settings
+dictionary = mwapi.DictionaryAPI(settings.APIKEY)
 #definition = dictionary.get_definition(word)
 
 Question_1 = "\n Define which word?\n"
