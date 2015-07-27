@@ -99,15 +99,23 @@ class MWApiException(Exception):
     pass
 
 #######################################################################################################
+dictionary = DictionaryAPI('f1778399-c8c8-48fd-b6d8-4afd40ce0530')
+thesaurus = ThesaurusAPI('a39b602f-93d0-491f-b4e7-2730b9cea4c2')
 
+
+#Question_1 = "\n Define which word?\n"
+#define_me = input(Question_1)
+
+#print (dictionary.get_definition(define_me))
+
+
+
+############################################################################
 
 import tkinter as tk
 
 def center(win):
-    """
-    centers a tkinter window
-    :param win: the root or Toplevel window to center
-    """
+
     win.update_idletasks()
     width = win.winfo_width()
     frm_width = win.winfo_rootx() - win.winfo_x()
@@ -127,12 +135,7 @@ FRONT_PAGE = ['Old Testament','New Testament']
 
 buttons = [
 'OT',  'NT']
-"""
-,  '9',  '*',  'C',
-'4',  '5',  '6',  '/',  'Neg',
-'1',  '2',  '3',  '-',  '$',
-'0',  '.',  '=',  '+',  '@' ]
-"""
+
 
 # set up GUI
 row = 1
@@ -204,29 +207,5 @@ def click_event(key):
 center(calc)
 calc.mainloop()
 
-import tkinter  # Python 3
+#import tkinter  # Python 3
 
-# if __name__ == '__main__':
-#     root = tkinter.Tk()
-#     root.attributes('-alpha', 0.0)
-#     menubar = tkinter.Menu(root)
-#     filemenu = tkinter.Menu(menubar, tearoff=0)
-#     filemenu.add_command(label="Exit", command=root.destroy)
-#     menubar.add_cascade(label="File", menu=filemenu)
-#     root.config(menu=menubar)
-#     frm = tkinter.Frame(root, bd=4, relief='raised')
-#     frm.pack(fill='x')
-#     lab = tkinter.Label(frm, text='Hello World!', bd=4, relief='sunken')
-#     lab.pack(ipadx=4, padx=4, ipady=4, pady=4, fill='both')
-#     center(root)
-#     root.attributes('-alpha', 1.0)
-#     root.mainloop()
-
-
-dictionary = mwapi.DictionaryAPI(settings.APIKEY)
-#definition = dictionary.get_definition(word)
-
-Question_1 = "\n Define which word?\n"
-define_me = input(Question_1)
-
-print (dictionary.get_definition(define_me))

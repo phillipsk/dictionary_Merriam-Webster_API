@@ -109,4 +109,4 @@ thesaurus = ThesaurusAPI('a39b602f-93d0-491f-b4e7-2730b9cea4c2')
 Question_1 = "\n Define which word?\n"
 define_me = input(Question_1)
 
-#print (dictionary.get_definition(define_me))
+print (dictionary.get_definition(define_me))
