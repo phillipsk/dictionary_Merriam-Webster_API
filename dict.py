@@ -33,7 +33,7 @@ class MerriamWebsterAPI:
             raise MWApiException('No entries found')
         return first_entry
         
-
+"""
 class ThesaurusAPI(MerriamWebsterAPI):
     base_url = 'http://www.dictionaryapi.com/api/v1/references/thesaurus/xml/'
     
@@ -69,10 +69,10 @@ class ThesaurusAPI(MerriamWebsterAPI):
         result = self._retrieve_xml(word)
         related_words = self._parse_xml_for_rel_words(result)
         return related_words
-
+"""
 class DictionaryAPI(MerriamWebsterAPI):
     base_url = 'http://www.dictionaryapi.com/api/v1/references/collegiate/xml/'
-    
+
     def _parse_xml_for_def(self, xml):
         main_entry = self._get_xml_root(xml)
         deftag = main_entry.find('def')
@@ -83,30 +83,31 @@ class DictionaryAPI(MerriamWebsterAPI):
         main_entry = self._get_xml_root(xml)
         etym = main_entry.find('et').text
         return etym
-        
+     
     def get_definition(self, word):
         result = self._retrieve_xml(word)
         definition = self._parse_xml_for_def(result)
         return definition
-        
+"""     
     def get_etymology(self, word):
         result = self._retrieve_xml(word)
         etym = self._parse_xml_for_etym(result)
         return etym
-        
+"""     
 
 class MWApiException(Exception):
     pass
 
 #######################################################################################################
 dictionary = DictionaryAPI('f1778399-c8c8-48fd-b6d8-4afd40ce0530')
-thesaurus = ThesaurusAPI('a39b602f-93d0-491f-b4e7-2730b9cea4c2')
+#thesaurus = ThesaurusAPI('a39b602f-93d0-491f-b4e7-2730b9cea4c2')
 
 
-#Question_1 = "\n Define which word?\n"
-#define_me = input(Question_1)
+Question_1 = "\n Define which word?\n"
+define_me = input(Question_1)
 
 #print (dictionary.get_definition(define_me))
+print (dictionary.get_definition(define_me))
 
 
 
