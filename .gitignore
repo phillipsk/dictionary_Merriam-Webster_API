@@ -3,3 +3,7 @@ __pycache__/
 *.pyc
 vocab_backup.txt
 *~
+*.spec
+build/
+dist/
+.*
