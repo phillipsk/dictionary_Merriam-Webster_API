@@ -142,12 +142,13 @@ calc.title("VocabU")
 Question_1 = str("Define which word?")
 FRONT_PAGE = ['Define me!', Question_1]
 def retrieve_input():
-    input = calc.myText_Box.get("1.0",'end-1c')
+    the_input = calc.myText_Box.get("1.0",'end-1c')
     define_me = dictionary.get_definition(input)
     return define_me
 
-USER_INP = retrieve_input()
+#USER_INP = retrieve_input()
 
+calc.myText_Box.get("1.0",'end-1c')
 
 #RESPONSE = str(dictionary.get_definition(input))
 # set up GUI

@@ -1,6 +1,3 @@
-#from urllib.parse import quote_plus
-#from urllib.request import urlopen
-
 from urllib import quote_plus
 from urllib import urlopen
 
@@ -8,7 +5,7 @@ import xml.etree.ElementTree as ET
 
 ittag = str.encode('<it>')
 itclose = str.encode('</it>')
-empty = bytes('', 'utf-8')
+empty = bytes('utf-8')
 
 class MerriamWebsterAPI:
     def __init__(self, key):
@@ -32,7 +29,7 @@ class MerriamWebsterAPI:
     def _get_xml_root(self, xml):
         root = ET.fromstring(xml)
         first_entry = root.find('entry')
-        if not first_entry:
+        if not len(first_entry):
             raise MWApiException('No entries found')
         return first_entry
         
@@ -75,7 +72,7 @@ class ThesaurusAPI(MerriamWebsterAPI):
 
 class DictionaryAPI(MerriamWebsterAPI):
     base_url = 'http://www.dictionaryapi.com/api/v1/references/collegiate/xml/'
-    
+
     def _parse_xml_for_def(self, xml):
         main_entry = self._get_xml_root(xml)
         deftag = main_entry.find('def')
@@ -86,18 +83,17 @@ class DictionaryAPI(MerriamWebsterAPI):
         main_entry = self._get_xml_root(xml)
         etym = main_entry.find('et').text
         return etym
-        
+     
     def get_definition(self, word):
         result = self._retrieve_xml(word)
         definition = self._parse_xml_for_def(result)
         return definition
-        
+
     def get_etymology(self, word):
         result = self._retrieve_xml(word)
         etym = self._parse_xml_for_etym(result)
         return etym
-        
+
 
 class MWApiException(Exception):
     pass
-
