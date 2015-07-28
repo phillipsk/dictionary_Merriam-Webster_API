@@ -103,12 +103,13 @@ dictionary = DictionaryAPI('f1778399-c8c8-48fd-b6d8-4afd40ce0530')
 #thesaurus = ThesaurusAPI('a39b602f-93d0-491f-b4e7-2730b9cea4c2')
 
 
-Question_1 = "\n Define which word?\n"
-define_me = raw_input(Question_1)
+#Question_1 = "\n Define which word?\n"
+#Question_1 = str("Define which word?")
+#define_me = raw_input(Question_1)
 
 #print (dictionary.get_definition(define_me))
-RESPONSE = str(dictionary.get_definition(define_me))
-print RESPONSE
+#RESPONSE = str(dictionary.get_definition(define_me))
+#print RESPONSE
 
 
 
@@ -134,19 +135,28 @@ def center(win):
 calc = tk.Tk()
 calc.title("VocabU")
 
-FRONT_PAGE = ['Define me!','New Testament']
 
-buttons = [
-'OT',  'NT']
+#buttons = [
+#'OT',  'NT']
+
+Question_1 = str("Define which word?")
+FRONT_PAGE = ['Define me!', Question_1]
+def retrieve_input():
+    input = calc.myText_Box.get("1.0",'end-1c')
+    define_me = dictionary.get_definition(input)
+    return define_me
+
+USER_INP = retrieve_input()
 
 
+#RESPONSE = str(dictionary.get_definition(input))
 # set up GUI
 row = 1
 col = 0
 for i in FRONT_PAGE:
     button_style = 'raised'
     #action =
-    action = lambda x = RESPONSE: click_event(x)
+    action = lambda x = retrieve_input(): click_event(x)
     tk.Button(calc, text = i, width = 17, height = 3, relief = button_style, command = action) \
     .grid(row = row, column = col, sticky = 'nesw')
     col += 1
@@ -154,7 +164,7 @@ for i in FRONT_PAGE:
         col = 0
         row += 1
 
-display = tk.Entry(calc, width = 40, bg = "white")
+display = tk.Entry(calc, width = 40, bg = "white", text = Question_1)
 #display.pack
 display.grid(row = 2, column = 0, columnspan = 1) # columnspan = 5
 
