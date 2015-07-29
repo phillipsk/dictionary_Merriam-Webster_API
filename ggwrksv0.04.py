@@ -1,4 +1,5 @@
 from Tkinter import *
+import Tkinter as tk
 #import settings
 import py2mwapi
 
@@ -14,22 +15,27 @@ def copytext():
 
 def print_function():
     dictionary = py2mwapi.DictionaryAPI(APIKEY)
-    thesaurus = py2mwapi.ThesaurusAPI(APIKEY_T)
-    define_me = "zeus"
+    #thesaurus = py2mwapi.ThesaurusAPI(APIKEY_T)
+    define_me = entry_1.get()
 
     definition = dictionary.get_definition(define_me)
-    synonyms = thesaurus.get_synonyms(define_me)
-    related_words = thesaurus.get_related_words(define_me)
-    print define_me
+    #synonyms = thesaurus.get_synonyms(define_me)
+    #related_words = thesaurus.get_related_words(define_me)
+    entry_2.delete(0, END)
+    entry_2.insert(0, definition)
 #################################################
 
-mw = Tk()
-label_1 = Label(mw, text="Enter some text: ")
+# calc = tk.Tk()
+# calc.title("VocabU")
+mw = tk.Tk()
+mw.title("VocabU")
+
+label_1 = Label(mw, text="Define me: ")
 entry_1 = Entry(mw)
-label_2 = Label(mw, text='Output: ')
+label_2 = Label(mw, text='Definition: ')
 entry_2 = Entry(mw)
 
-button_1 = Button(mw, text="Submit", command=print_function())
+button_1 = Button(mw, text="Submit", command=print_function)
 
 
 
